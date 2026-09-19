@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import { Image } from 'astro:assets';
 import sculpture from '../assets/chrome-loop.png';
+import portrait from '../assets/manuel-sanchez.jpg';
 import { profile, projects, reviews } from '../data/site';
 const technologies = [
   { name: 'Astro', tag: 'LA BASE', description: 'Contenido que carga rápido. Solo el JavaScript que realmente hace falta.', symbol: 'A', className: 'astro' },
@@ -83,7 +84,7 @@ const technologies = [
       <div class="container section">
         <span class="section-label light-label" data-reveal><span>03 /</span> DETRÁS DE FIRSTECH</span>
         <div class="about-grid">
-          <div class="about-heading" data-reveal><h2 id="about-title">Hola,<br />soy Manuel<span class="lime">.</span></h2><div class="signature-line"><span class="avatar-type" aria-hidden="true">MS</span><div><strong>{profile.name}</strong><span>La persona detrás del código.</span></div><Icon name="code" /></div></div>
+          <div class="about-heading" data-reveal><h2 id="about-title">Hola,<br />soy Manuel<span class="lime">.</span></h2><div class="signature-line"><Image class="profile-photo" src={portrait} alt="Foto de Manuel Sanchez" width={160} height={160} widths={[80, 160, 240]} sizes="80px" fit="cover" position="center" format="webp" quality={85} loading="lazy" decoding="async" /><div><strong>{profile.name}</strong><span>La persona detrás del código.</span></div><Icon name="code" /></div></div>
           <div class="about-copy" data-reveal><p class="large-copy">Estoy aprendiendo a construir software.<br /><span>Y quiero hacerlo construyendo cosas que importen.</span></p><p>Estudio segundo de Ingeniería Informática y he creado Firstech para llevar lo que aprendo a proyectos reales: webs que ayuden a pequeños negocios a tener su propio espacio en internet.</p><p>Me interesa la unión entre diseño y tecnología. Que una web se vea bien, funcione con fluidez y tenga sentido para la persona que la utiliza.</p><div class="education"><span class="education-icon"><Icon name="code" /></span><div><span>ACTUALMENTE ESTUDIANDO</span><strong>{profile.education}</strong></div></div></div>
         </div>
         <div class="tech-section" id="tecnologias">
