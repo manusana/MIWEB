@@ -55,3 +55,32 @@
   .launch-offer { padding: 28px 22px; }
   .offer-main .button { width: 100%; gap: 12px; padding-inline: 16px; }
 }
+
+/* Keep project frames bounded even when a browser uses intrinsic flex/grid sizes. */
+.project-grid,
+.project-card,
+.project-cover {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.project-cover > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+@media (max-width: 760px) {
+  .project-grid { display: block; }
+  .project-card { inline-size: 100%; }
+  .project-card + .project-card { margin-block-start: 40px; }
+  .project-cover {
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: auto;
+  }
+  .cover-top > span,
+  .cover-bottom > span,
+  .project-caption > div { min-inline-size: 0; overflow-wrap: anywhere; }
+}
+@media (hover: none) {
+  .project-cover:hover { transform: none; box-shadow: none; }
+}
