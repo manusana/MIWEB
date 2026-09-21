@@ -1,6 +1,6 @@
-# Firstech
+# Manuel Sanchez — Portfolio
 
-Web de una sola página de Manuel Sanchez para presentar Firstech y su propuesta de desarrollo web para pequeños negocios.
+Portfolio de Manuel Sanchez: presentación, estudios, tecnologías, proyectos y proceso de desarrollo web para empresas sin web o con páginas anticuadas.
 
 ## Desarrollo
 
@@ -23,16 +23,16 @@ La web estática se genera en `dist/`.
 
 ## Contenido
 
-- `src/data/site.ts`: nombre, estudios, correo, proyectos y reseñas. Al rellenar `profile.email`, el bloque de contacto muestra automáticamente un enlace de correo.
+- `src/data/site.ts`: nombre, estudios, correo y proyectos. Al rellenar `profile.email`, el bloque de contacto muestra automáticamente un enlace de correo.
 - `src/pages/index.astro`: secciones y textos.
 - `src/styles/global.css`: identidad visual y adaptación a móvil.
 - `src/scripts/interactions.ts`: menú móvil, sección activa y entradas al hacer scroll.
 
-El proyecto Firstech se muestra como trabajo propio. No se han inventado clientes ni reseñas. Añadir testimonios reales con permiso de sus autores.
+El portfolio se muestra como proyecto personal. El segundo bloque invita a colaborar y no se presenta como un trabajo realizado. No se han inventado proyectos, clientes ni testimonios.
 
 ## Diseño y rendimiento
 
-Astro estático, TypeScript y Tailwind CSS. Tipografía Manrope alojada localmente (licencia en `public/fonts/OFL-Manrope.txt`). Imagen abstracta original generada para Firstech, optimizada a WebP en varios tamaños por Astro. Scroll nativo y animaciones respetuosas con `prefers-reduced-motion`; el contenido y los acordeones funcionan sin JavaScript.
+Astro estático, TypeScript y Tailwind CSS. Tipografía Manrope alojada localmente (licencia en `public/fonts/OFL-Manrope.txt`). Imagen abstracta original del portfolio, optimizada a WebP en varios tamaños por Astro. Scroll nativo y animaciones respetuosas con `prefers-reduced-motion`; el contenido y los acordeones funcionan sin JavaScript.
 
 ## Publicación
 
