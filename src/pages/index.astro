@@ -3,104 +3,84 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import { Image } from 'astro:assets';
 import portrait from '../assets/manuel-sanchez.jpg';
-import { profile, projects } from '../data/site';
-
-const technologies = [
-  { name: 'Astro', tag: 'LA BASE', description: 'Webs centradas en el contenido, con el JavaScript justo para cada interacción.', symbol: 'A', className: 'astro' },
-  { name: 'TypeScript', tag: 'EL CÓDIGO', description: 'Código ordenado y comprobaciones que ayudan a detectar errores al desarrollar.', symbol: 'TS', className: 'typescript' },
-  { name: 'Tailwind CSS', tag: 'EL DISEÑO', description: 'Interfaces coherentes y adaptadas a distintas pantallas.', symbol: '≈', className: 'tailwind' },
-  { name: 'Git & GitHub', tag: 'EL PROCESO', description: 'Control de versiones para seguir los cambios y la evolución de cada proyecto.', symbol: '↗', className: 'git' },
-];
-const process = [
-  { title: 'Primero, entender el negocio.', subtitle: 'Qué haces, a quién te diriges y qué necesitas.', description: 'Hablamos de tus servicios, tus clientes y lo que quieres conseguir con la web. Si ya tienes una, reviso su contenido, su funcionamiento en móvil y qué está dificultando que la gente encuentre lo que busca. Acordamos el alcance y los plazos antes de empezar.', tags: ['Análisis de la web actual', 'Objetivos y alcance'] },
-  { title: 'Ordenar y diseñar.', subtitle: 'Una estructura clara y una identidad propia.', description: 'Defino las secciones y organizo los textos, las imágenes y las formas de contacto. Preparo una propuesta visual que encaje con tu negocio y la revisamos juntos antes de pasar al desarrollo.', tags: ['Contenido', 'Diseño a medida'] },
-  { title: 'Construir con cuidado.', subtitle: 'Móvil, velocidad y accesibilidad desde el inicio.', description: 'Desarrollo la web con Astro y adapto el diseño a móvil, tablet y escritorio. Optimizo las imágenes, cuido la navegación con teclado y añado movimiento donde mejora la experiencia. Preparo también títulos y descripciones para los buscadores.', tags: ['Desarrollo responsive', 'Rendimiento'] },
-  { title: 'Revisar y publicar.', subtitle: 'Comprobar los detalles antes de dar el paso.', description: 'Revisamos el contenido, los enlaces, el contacto y el comportamiento en distintos tamaños de pantalla. Si sustituimos una web existente, planificamos el cambio y las redirecciones de las páginas necesarias. Dejamos acordados el dominio, el alojamiento y cómo se gestionarán las futuras actualizaciones.', tags: ['Pruebas y lanzamiento', 'Entrega y mantenimiento'] },
-];
+import { profile, projects, process, toolkit } from '../data/site';
+const reviews = projects.filter(project => project.review);
 ---
 <Layout>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="header" id="inicio">
     <div class="container header-inner">
-      <a class="brand" href="#inicio" aria-label="Manuel Sanchez, inicio"><span class="brand-symbol" aria-hidden="true">ms.</span><span>{profile.name}</span><span class="brand-dot" aria-hidden="true">✳</span></a>
+      <a class="brand" href="#sobre-mi" aria-label="Manuel Sanchez, inicio">manuel sanchez<span aria-hidden="true">.</span></a>
       <button class="menu-toggle" aria-label="Abrir menú" aria-controls="navigation" aria-expanded="false"><span></span><span></span></button>
       <nav id="navigation" aria-label="Navegación principal">
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#desarrollo-web">Desarrollo web</a>
-        <a class="nav-contact" href="#contacto">Hablemos <Icon /></a>
+        <a href="#sobre-mi">Sobre mí</a><a href="#proyectos">Proyectos</a><a href="#desarrollo-web">Cómo trabajo</a><a href="#herramientas">Herramientas</a><a class="nav-contact" href="#contacto">Hablemos <Icon /></a>
       </nav>
     </div>
   </header>
   <main id="contenido">
-    <section class="about-section" id="sobre-mi" aria-labelledby="about-title">
-      <div class="container section">
-        <span class="section-label light-label" data-reveal><span>01 /</span> SOBRE MÍ</span>
-        <div class="about-grid">
-          <div class="about-heading" data-reveal>
-            <h1 id="about-title">La persona<br />detrás del<br />código<span class="lime">.</span></h1>
-            <div class="signature-line"><Image class="profile-photo" src={portrait} alt="Foto de Manuel Sanchez" width={160} height={160} widths={[80, 160, 240]} sizes="80px" fit="cover" position="center" format="webp" quality={85} loading="eager" fetchpriority="high" decoding="async" /><div><strong>{profile.name}</strong><span>Estudiante de Ingeniería Informática.</span></div><Icon name="code" /></div>
-          </div>
-          <div class="about-copy" data-reveal>
-            <p class="large-copy">Estoy aprendiendo a construir software.<br /><span>Y quiero hacerlo construyendo cosas que importen.</span></p>
-            <p>Estudio segundo de Ingeniería Informática. Me gusta llevar lo que aprendo a la práctica: plantear una idea, entender cómo resolverla y darle forma con código.</p>
-            <p>Me interesa especialmente la unión entre diseño y tecnología. Que una web se vea bien, funcione con fluidez y tenga sentido para la persona que la utiliza.</p>
-            <p>En este portfolio iré compartiendo mis proyectos y mi evolución. Una de las formas en las que quiero aplicar lo que sé es ayudando a pequeños negocios a crear o renovar su presencia en internet.</p>
-            <div class="education"><span class="education-icon"><Icon name="code" /></span><div><span>ACTUALMENTE ESTUDIANDO</span><strong>{profile.education}</strong></div></div>
+    <section class="intro dark-section" id="sobre-mi" aria-labelledby="intro-title">
+      <div class="container">
+        <div class="intro-top"><span class="eyebrow">PORTFOLIO / DESARROLLO WEB</span><span class="availability"><span></span> Abierto a primeras colaboraciones</span></div>
+        <div class="intro-grid">
+          <div class="intro-heading"><h1 id="intro-title">Tu negocio.<br />Una web<br /><span>a su altura.</span></h1><div class="intro-caption"><span class="small-cross" aria-hidden="true">✳</span><p>Diseño con intención.<br />Código con cuidado.</p></div></div>
+          <div class="intro-person">
+            <div class="person-heading"><Image src={portrait} alt="Manuel Sanchez" class="portrait" width={160} height={160} widths={[80, 160, 240]} sizes="80px" fit="cover" position="center" format="webp" quality={85} loading="eager" fetchpriority="high" /><div><span class="eyebrow">LA PERSONA DETRÁS</span><h2>Soy Manuel<span>.</span></h2></div></div>
+            <p class="intro-lead">Desarrollo webs para pequeños negocios que quieren dar su primer paso. O dar uno mejor.</p>
+            <p>Estudio segundo de Ingeniería Informática y me gusta unir diseño y programación para crear cosas útiles. Mi objetivo es que tu web explique bien lo que haces, se sienta cuidada y facilite que te encuentren.</p>
+            <a class="button button-lime" href="#proyectos">Conoce mi trabajo <Icon name="arrow" /></a>
+            <span class="study-note">{profile.education}<span aria-hidden="true">↗</span></span>
           </div>
         </div>
-        <div class="tech-section" id="tecnologias">
-          <div class="tech-heading" data-reveal><span class="section-label light-label">HERRAMIENTAS QUE UTILIZO</span><p>Mi base para desarrollar webs.</p></div>
-          <div class="tech-grid">{technologies.map((tech) => <article class="tech-card" data-reveal><div class="tech-top"><span class:list={['tech-symbol', tech.className]} aria-hidden="true">{tech.symbol}</span><span>{tech.tag}</span></div><h3>{tech.name}</h3><p>{tech.description}</p></article>)}</div>
+        <div class="intro-bottom"><span>DE LA PRIMERA IDEA A TU PROPIA WEB</span><a href="#desarrollo-web">Así puedo ayudarte <Icon name="down" /></a></div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="desarrollo-web" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-top" data-reveal><span class="eyebrow">01 / LO QUE HAGO</span><span class="section-note">Una web. Un propósito.</span></div>
+        <div class="service-intro" data-reveal><h2 id="services-title">Lo que haces merece<br />verse <span class="serif">bien.</span></h2><p>Una primera web para empezar a estar presente. Un rediseño para que tu negocio deje de parecer de otra época. En ambos casos, el punto de partida eres tú.</p></div>
+        <div class="service-paths">
+          <article data-reveal><span class="path-icon" aria-hidden="true"><Icon name="plus" /></span><h3>Empezar desde cero.</h3><p>Tu negocio ya tiene una historia. La convierto en una web con tus servicios, tu personalidad y una forma clara de contactar.</p><span class="small-label">PARA NEGOCIOS SIN WEB</span></article>
+          <article data-reveal><span class="path-icon" aria-hidden="true"><Icon name="diagonal" /></span><h3>Volver a presentarte.</h3><p>Replanteamos una web anticuada: contenido más claro, un diseño actual y una experiencia que funcione también desde el móvil.</p><span class="small-label">PARA WEBS QUE NECESITAN UN CAMBIO</span></article>
         </div>
+        <div class="process-layout"><div class="process-heading" data-reveal><span class="eyebrow">MI FORMA DE TRABAJAR</span><h3>Contigo.<br /> Paso a paso.</h3><p>Trato directo, decisiones compartidas y atención a los detalles.</p></div><div class="process-list">{process.map((step,index)=><details class="process-step" open={index===0} data-reveal><summary><span class="small-label">{step.label}</span><span class="step-title">{step.title}</span><Icon name="plus" /></summary><p>{step.description}</p></details>)}</div></div>
       </div>
     </section>
 
     <section class="section projects-section" id="proyectos" aria-labelledby="projects-title">
       <div class="container">
-        <div class="section-heading" data-reveal><div><span class="section-label"><span>02 /</span> PROYECTOS</span><h2 id="projects-title">Lo que voy<br /><span class="muted">construyendo.</span></h2></div><p>Mis ideas llevadas a la práctica.<br />Un espacio que crecerá con cada proyecto.</p></div>
+        <div class="section-top" data-reveal><span class="eyebrow">02 / PROYECTOS</span><span class="section-note">Ideas que ya tienen forma.</span></div>
+        <div class="section-heading" data-reveal><h2 id="projects-title">Hecho con <span class="serif">criterio.</span></h2><p>Estoy construyendo mi camino.<br />Este es el primer paso.</p></div>
         <div class="project-grid">
-          <article class="project-card" data-reveal>
-            <a href="#inicio" class="project-cover portfolio-cover" aria-label="Ver mi portfolio: volver al inicio"><div class="cover-top"><span>PROYECTO PERSONAL</span><Icon /></div><div class="cover-brand">Manuel<br />Sanchez<span>✳</span></div><div class="cover-bottom"><span>Mi espacio en internet.</span><span class="cover-pill">ASTRO + TYPESCRIPT</span></div></a>
-            <div class="project-caption"><div><h3>Mi portfolio personal</h3><p>Diseño, desarrollo e identidad propia.</p></div><span class="project-year">2026</span></div>
-            <details class="project-details"><summary>Sobre este proyecto <Icon name="plus" /></summary><p>Una web de una sola página para presentarme, compartir mis proyectos y explicar mi forma de trabajar. Desarrollada con Astro, TypeScript y Tailwind CSS, con imágenes optimizadas, navegación por secciones y movimiento adaptado a las preferencias de cada persona.</p></details>
-          </article>
-          {projects.map((project) => <article class="project-card added-project" data-reveal><a class="project-cover custom-cover" href={project.url} target="_blank" rel="noopener noreferrer"><div class="cover-top"><span>{project.category}</span><Icon /></div><h3>{project.name}</h3><span>Visitar el proyecto ↗</span></a><div class="project-caption"><div><h3>{project.name}</h3><p>{project.description}</p></div></div></article>)}
-          <article class="project-card next-project" data-reveal>
-            <a class="project-cover next-cover" href="#desarrollo-web"><div class="cover-top"><span>ABIERTO A COLABORACIONES</span><Icon /></div><div class="next-title">Tu próxima<br /><span>web.</span></div><div class="cover-bottom"><span>Conoce cómo puedo ayudarte.</span><span class="next-plus" aria-hidden="true">+</span></div></a>
-            <div class="project-caption"><div><h3>¿Construimos algo juntos?</h3><p>Desarrollo web para pequeños negocios.</p></div></div>
-          </article>
+          {projects.map((project,index)=><article class="project-card" data-reveal>
+            <a class:list={['project-visual', { 'additional-project': index > 0 }]} href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: abrir proyecto en una pestaña nueva`}>
+              {index===0 ? <div class="site-miniature" aria-hidden="true"><div class="mini-nav"><span>manuel sanchez.</span><span>Portfolio ↗</span></div><div class="mini-content"><span class="mini-label">DISEÑO + DESARROLLO</span><strong>Tu negocio.<br />Una web<br /><em>a su altura.</em></strong><span class="mini-orbit">✳</span></div><div class="mini-bottom"><span>CON NOMBRE PROPIO.</span><span>2026</span></div></div> : <span class="project-placeholder">{project.name}<Icon /></span>}
+              <span class="project-open"><Icon /></span>
+            </a>
+            <div class="project-meta"><span class="small-label">{project.category}</span><span>{project.year}</span></div>
+            <h3>{project.name}</h3><p>{project.description}</p><div class="tags">{project.tools.map(tool=><span>{tool}</span>)}</div>
+            {project.review && <blockquote class="project-review"><p>“{project.review.quote}”</p><cite>{project.review.author} · {project.review.role}</cite></blockquote>}
+            {index===0 && <a class="text-link project-source" href={project.url} target="_blank" rel="noopener noreferrer">Ver código en GitHub <Icon /></a>}
+          </article>)}
+          <article class="next-project" data-reveal><span class="small-label">EL SIGUIENTE CAPÍTULO</span><span class="next-art" aria-hidden="true">↗</span><div><h3>Aquí podría estar<br /><span class="serif">tu negocio.</span></h3><p>Busco mis primeras colaboraciones con pequeños negocios. Una oportunidad para construir algo cuidado, juntos.</p><a class="text-link" href="#colaboraciones">Conoce la propuesta <Icon /></a></div></article>
         </div>
+        <div class="reviews" id="resenas" data-reveal><div><span class="eyebrow">RESEÑAS / LA OTRA PARTE DEL PROYECTO</span><h3>El trabajo también<br />se cuenta <span class="serif">desde el otro lado.</span></h3></div><div class="review-content"><span class="quote-mark" aria-hidden="true">“</span>{reviews.length ? <><p>Cada proyecto tiene su historia. Las opiniones de quienes han trabajado conmigo aparecen junto a su web.</p><a class="text-link" href="#proyectos">Leer las reseñas de los proyectos <Icon name="arrow" /></a></> : <><p>Las primeras historias están por escribir.</p><p class="review-note">Cuando termine las primeras colaboraciones, compartiré aquí las reseñas reales de sus responsables y las vincularé a cada proyecto.</p><span class="review-status"><span></span> Próximamente, experiencias reales</span></>}</div></div>
       </div>
     </section>
 
-    <section class="section container web-section" id="desarrollo-web" aria-labelledby="services-title">
-      <div class="services">
-        <div class="section-intro" data-reveal>
-          <span class="section-label"><span>03 /</span> DESARROLLO WEB</span>
-          <h2 id="services-title">Una primera web.<br /><span class="muted">O un nuevo<br />comienzo.</span></h2>
-          <p>Ayudo a pequeños negocios que todavía no tienen web o cuya página se ha quedado anticuada. Diseño y desarrollo un espacio que explique bien lo que hacen y facilite que sus clientes contacten.</p>
-          <p>Trabajo directamente contigo, desde la primera conversación hasta la publicación. Así es el proceso:</p>
-          <a class="text-link" href="#contacto">Hablemos de tu web <Icon /></a>
-        </div>
-        <div class="service-list">{process.map((step, index) => <details class="service" open={index === 0} data-reveal><summary><span class="service-number">0{index + 1}</span><div><h3>{step.title}</h3><span>{step.subtitle}</span></div><Icon name="plus" /></summary><div class="service-body"><p>{step.description}</p><div class="tags">{step.tags.map(tag => <span>{tag}</span>)}</div></div></details>)}</div>
-      </div>
-      <div class="launch-offer" id="primeros-proyectos" data-reveal>
-        <div class="offer-main"><span class="offer-label"><span></span> PRIMERAS COLABORACIONES</span><h3>Tu negocio, bien contado.<br />También en internet.</h3><p>Busco mis primeros proyectos con empresas sin web o con una página que necesite renovarse. En estas primeras colaboraciones, ofrezco el diseño y el desarrollo sin coste a cambio de una reseña honesta sobre la experiencia.</p><a class="button button-lime" href="#contacto">Cuéntame tu proyecto <Icon name="arrow" /></a></div>
-        <div class="offer-aside"><span class="offer-asterisk" aria-hidden="true">✳</span><ul><li><Icon name="check" /> Una estructura pensada para tus clientes</li><li><Icon name="check" /> Diseño adaptado a móvil y escritorio</li><li><Icon name="check" /> Revisión conjunta antes de publicar</li></ul><p>Antes de empezar, acordamos qué incluye el proyecto, los plazos y los posibles costes de dominio, alojamiento y mantenimiento.</p></div>
+    <section class="section tools-section dark-section" id="herramientas" aria-labelledby="tools-title">
+      <div class="container">
+        <div class="section-top" data-reveal><span class="eyebrow">03 / HERRAMIENTAS</span><Icon name="code" /></div>
+        <div class="section-heading" data-reveal><h2 id="tools-title">Lo que hay<br /><span class="serif">detrás.</span></h2><p>Elijo las herramientas por lo que aportan al proyecto: claridad, rendimiento y una base que pueda seguir creciendo.</p></div>
+        <div class="tool-list">{toolkit.map(group=><article class="tool-row" data-reveal><span class="tool-number">{group.number}</span><div><h3>{group.title}</h3><p>{group.summary}</p></div><div class="tool-detail"><div class="tags">{group.tools.map(tool=><span>{tool}</span>)}</div><p>{group.description}</p></div></article>)}</div>
+        <div class="quality-note" data-reveal><span class="small-cross" aria-hidden="true">✳</span><p>La tecnología está para que todo funcione.<br /><strong>La experiencia está para que se note.</strong></p></div>
       </div>
     </section>
 
-    <section class="contact-section" id="contacto" aria-labelledby="contact-title">
-      <div class="container contact-inner" data-reveal><span class="section-label"><span>04 /</span> CONTACTO</span><div class="contact-heading"><h2 id="contact-title">¿Tienes una idea?<br /><span class="blue">Hablemos.</span></h2><span class="contact-arrow" aria-hidden="true">↗</span></div>
-        {profile.email ? <div class="contact-bottom"><p>Para una web, una colaboración o compartir ideas.<br />Me encantará conocer tu proyecto.</p><a class="button button-dark" href={'mailto:' + profile.email}>{profile.email}<Icon /></a></div> : <div class="contact-bottom"><p>Pronto añadiré mi correo de contacto.<br />Aquí podrás escribirme sobre proyectos y colaboraciones.</p><span class="contact-pending"><span class="status-dot"></span> Correo disponible próximamente</span></div>}
-      </div>
-    </section>
+    <section class="section collaboration-section" id="colaboraciones" aria-labelledby="collaboration-title"><div class="container collaboration-grid" data-reveal><div><span class="eyebrow">UN BUEN PUNTO DE PARTIDA</span><h2 id="collaboration-title">Tu primera web.<br />Mi siguiente <span class="serif">paso.</span></h2></div><div><p class="collaboration-lead">Estoy empezando. Y quiero hacerlo con proyectos que sirvan de verdad.</p><p>En mis primeras colaboraciones ofrezco el diseño y desarrollo sin coste a cambio de una reseña honesta. Tú mejoras la presencia de tu negocio y yo sumo experiencia y proyectos a mi portfolio.</p><p class="terms">Acordamos el alcance y los plazos antes de empezar. El dominio, el alojamiento y cualquier mantenimiento se valoran por separado.</p><a class="text-link" href="#contacto">Demos el primer paso <Icon /></a></div></div></section>
+
+    <section class="contact-section" id="contacto" aria-labelledby="contact-title"><div class="container"><div class="section-top" data-reveal><span class="eyebrow">04 / SIGUIENTE PASO</span><span class="availability"><span></span> Construyendo nuevas conexiones</span></div><div class="contact-main" data-reveal><h2 id="contact-title">Lo hablamos<span class="serif">.</span></h2><span class="contact-arrow" aria-hidden="true">↗</span></div><div class="contact-bottom" data-reveal><p>Cuéntame qué haces.<br />Pensemos cómo contarlo en una web.</p>{profile.email ? <a class="button button-dark" href={`mailto:${profile.email}`}>{profile.email}<Icon /></a> : <div class="contact-pending"><span>Mi correo de contacto estará disponible pronto.</span><a class="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">Mientras tanto, mi código está en GitHub <Icon /></a></div>}</div></div></section>
   </main>
-  <footer class="footer container">
-    <div class="footer-top"><a class="brand" href="#inicio"><span class="brand-symbol" aria-hidden="true">ms.</span><span>{profile.name}</span></a><p>Un portfolio en constante evolución.</p><a class="text-link" href="#inicio">Volver arriba <Icon /></a></div>
-    <div class="footer-wordmark" aria-hidden="true">Manuel Sanchez<span>✳</span></div>
-    <div class="footer-bottom"><span>© {new Date().getFullYear()} {profile.name}</span><span>Diseñado con cuidado. Construido con Astro.</span></div>
-  </footer>
+  <footer class="footer"><div class="container footer-inner"><a class="brand" href="#inicio">manuel sanchez<span>.</span></a><span>© {new Date().getFullYear()} · Siempre aprendiendo.</span><a class="text-link" href="#inicio">Volver arriba <Icon name="arrow" /></a></div></footer>
   <script>import '../scripts/interactions';</script>
 </Layout>
