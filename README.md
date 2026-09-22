@@ -24,11 +24,11 @@ La web estática se genera en `dist/`.
 ## Contenido
 
 - `src/data/site.ts`: perfil, proyectos, reseñas, proceso y herramientas.
-- `src/pages/index.astro`: presentación personal, servicios, proceso, proyectos y reseñas, herramientas, primeras colaboraciones y contacto.
+- `src/pages/index.astro`: presentación personal, proyectos y reseñas, servicios y proceso, herramientas y contacto.
 - `src/styles/global.css`: diseño, transiciones y adaptación a móvil.
-- `src/scripts/interactions.ts`: menú móvil, sección activa y entradas al hacer scroll.
+- `src/scripts/interactions.ts`: menú móvil, sección activa, entradas al hacer scroll, escritura animada y copia de datos de contacto.
 
-Al rellenar `profile.email`, el bloque de contacto muestra un enlace de correo. Mientras tanto, muestra el estado pendiente y el GitHub de Manuel.
+El componente `ContactDetails.astro` muestra `profile.phone` y `profile.email`, con un botón de copiar por dato. La copia confirma el éxito o muestra una alternativa manual si el navegador no permite acceder al portapapeles. Sin JavaScript, los datos siguen siendo visibles y seleccionables.
 
 Para añadir un proyecto, incorpora un elemento al array `projects`. Su campo opcional `review` admite `quote`, `author` y `role`; la reseña aparecerá junto al proyecto. Publica únicamente opiniones reales con permiso de su autor. El portfolio es el único proyecto realizado mostrado inicialmente. La tarjeta de colaboración no se presenta como un trabajo terminado.
 

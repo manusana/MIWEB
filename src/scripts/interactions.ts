@@ -100,3 +100,35 @@ if (typedText && !motion.matches) {
     if (document.hidden) finishTyping();
   });
 }
+
+// Contact details stay selectable even if the Clipboard API is unavailable.
+document.querySelectorAll<HTMLButtonElement>('[data-copy-value]').forEach((button) => {
+  const label = button.querySelector<HTMLElement>('[data-copy-text]');
+  const feedback = document.getElementById(button.getAttribute('aria-describedby') ?? '');
+  const value = button.dataset.copyValue;
+  if (!label || !feedback || !value) return;
+  let resetTimer = 0;
+  button.hidden = false;
+  button.addEventListener('click', async () => {
+    window.clearTimeout(resetTimer);
+    button.disabled = true;
+    button.classList.remove('is-copied');
+    label.textContent = 'Copiar';
+    feedback.textContent = '';
+    try {
+      await navigator.clipboard.writeText(value);
+      label.textContent = 'Copiado';
+      button.classList.add('is-copied');
+      feedback.textContent = `${button.dataset.copyLabel} copiado al portapapeles.`;
+      resetTimer = window.setTimeout(() => {
+        label.textContent = 'Copiar';
+        button.classList.remove('is-copied');
+        feedback.textContent = '';
+      }, 3000);
+    } catch {
+      feedback.textContent = 'No se pudo copiar. Selecciona el dato y cópialo manualmente.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+});

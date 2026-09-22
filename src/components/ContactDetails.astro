@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/site';
+const contacts = [
+  { id: 'telefono', label: 'Teléfono', value: profile.phone, display: profile.phone.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3') },
+  { id: 'correo', label: 'Correo electrónico', value: profile.email, display: profile.email },
+];
+---
+<section class="contact-section" id="contacto" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="section-top" data-reveal><span class="eyebrow">04 / CONTACTO</span><span class="section-note">Trato directo, de principio a fin.</span></div>
+    <div class="section-heading" data-reveal>
+      <h2 id="contact-title">Seguimos en<br /><span class="heading-accent">contacto.</span></h2>
+      <p>Puedes llamarme o escribirme para hablar de tu negocio. Aquí tienes mis datos, listos para copiar.</p>
+    </div>
+    <dl class="contact-methods">
+      {contacts.map(contact => <div class="contact-card" data-reveal>
+        <dt class="eyebrow">{contact.label}</dt>
+        <dd>
+          <div class="contact-value-row">
+            <span class="contact-value" id={`contact-${contact.id}`}>{contact.display}</span>
+            <button class="copy-button" type="button" hidden data-copy-value={contact.value} data-copy-label={contact.label} aria-label={`Copiar ${contact.label.toLowerCase()}`} aria-describedby={`copy-status-${contact.id}`}><Icon name="copy" /><span data-copy-text>Copiar</span></button>
+          </div>
+          <p class="copy-feedback" id={`copy-status-${contact.id}`} role="status" aria-live="polite" aria-atomic="true"></p>
+        </dd>
+      </div>)}
+    </dl>
+  </div>
+</section>

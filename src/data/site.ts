@@ -1,7 +1,8 @@
 export const profile = {
   name: "Manuel Sanchez",
   education: "2.º de Ingeniería Informática",
-  email: "1firstech1@gmail.com",
+  email: "manusancheztech@gmail.com",
+  phone: "622164556",
   github: "https://github.com/manusana",
 };
 
@@ -40,28 +41,28 @@ export const projects: Project[] = [
 
 export const process = [
   {
-    title: "Escuchar antes de diseñar.",
-    label: "01 / Entender",
+    title: "Primero, hablamos de tu negocio.",
+    label: "01 / Contactar",
     description:
-      "Empezamos por tu negocio: qué ofreces, a quién y qué debería conseguir tu web. Si ya tienes una, revisamos qué funciona y qué necesita cambiar. Acordamos contenido, alcance y plazos.",
+      "Me pongo en contacto contigo para conocer tu negocio, lo que ofreces y cómo te gustaría presentarlo. Escucho tus ideas y vemos qué necesitas de tu web.",
   },
   {
-    title: "Dar forma a lo importante.",
-    label: "02 / Diseñar",
+    title: "Te enseño un primer ejemplo.",
+    label: "02 / Mostrar",
     description:
-      "Ordeno las secciones, los textos y las imágenes. Preparo una dirección visual propia para tu negocio y la revisamos juntos antes de desarrollar. Cada elemento tiene una razón para estar ahí.",
+      "Preparo un ejemplo de cómo podría ser tu web y te lo enseño. Así tienes algo concreto que ver y comentar: el diseño, las secciones y la forma de presentar tu negocio.",
   },
   {
-    title: "Cuidar lo que se ve. Y lo que no.",
-    label: "03 / Desarrollar",
+    title: "Lo ajustamos con tus ideas.",
+    label: "03 / Revisar",
     description:
-      "Construyo una web adaptada a móvil, tablet y ordenador. Cuido la velocidad, las imágenes, la navegación con teclado y los detalles de movimiento. También preparo los títulos y las descripciones para buscadores.",
+      "A partir de ese ejemplo, me cuentas qué te gusta y qué cambiarías. Voy adaptando el diseño, los textos y las secciones según tus comentarios, y revisamos juntos cada avance dentro del alcance que acordemos.",
   },
   {
-    title: "Publicar con todo en su sitio.",
-    label: "04 / Acompañar",
+    title: "Damos el último repaso y publicamos.",
+    label: "04 / Publicar",
     description:
-      "Comprobamos contenido, enlaces y contacto. Elegimos dominio y alojamiento según el proyecto, configuramos DNS y HTTPS, y planificamos las redirecciones si sustituimos una web. Dejamos acordado cómo gestionar las futuras actualizaciones.",
+      "Cuando la web esté lista, comprobamos cómo se ve en móvil y ordenador, revisamos los contenidos y los datos de contacto. Con tu visto bueno, la publicamos y dejamos acordados los siguientes pasos.",
   },
 ];
 
