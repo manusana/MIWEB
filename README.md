@@ -30,7 +30,7 @@ La web estática se genera en `dist/`.
 
 El componente `ContactDetails.astro` muestra `profile.phone` y `profile.email`, con un botón de copiar por dato. La copia confirma el éxito o muestra una alternativa manual si el navegador no permite acceder al portapapeles. Sin JavaScript, los datos siguen siendo visibles y seleccionables.
 
-Para añadir un proyecto, incorpora un elemento al array `projects`. Su campo opcional `review` admite `quote`, `author` y `role`; la reseña aparecerá junto al proyecto. Publica únicamente opiniones reales con permiso de su autor. El portfolio es el único proyecto realizado mostrado inicialmente. La tarjeta de colaboración no se presenta como un trabajo terminado.
+Para añadir un proyecto, incorpora un elemento al array `projects`. Su campo opcional `review` admite `quote`, `author` y `role`; la reseña aparecerá junto al proyecto. Publica únicamente opiniones reales con permiso de su autor. Los proyectos incluyen la web de dir.sixFilms y el portfolio personal. La captura real de dir.sixFilms está en `src/assets/projects/dir-sixfilms.png` y Astro la optimiza a WebP; al pulsarla se abre `https://dirweb.vercel.app/`. La tarjeta de colaboración no se presenta como un trabajo terminado.
 
 El proveedor de dominio y alojamiento está pendiente de elección. La sección de herramientas explica dominio, DNS, alojamiento y HTTPS sin atribuir un proveedor concreto.
 

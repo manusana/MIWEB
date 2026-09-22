@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import Icon from '../components/Icon.astro';
 import EditorProfile from '../components/EditorProfile.astro';
 import ContactDetails from '../components/ContactDetails.astro';
@@ -38,17 +39,17 @@ const reviews = projects.filter(project => project.review);
     <section class="section projects-section" id="proyectos" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-top" data-reveal><span class="eyebrow">01 / PROYECTOS</span><span class="section-note">Ideas que ya tienen forma.</span></div>
-        <div class="section-heading" data-reveal><h2 id="projects-title">Hecho con <span class="heading-accent">criterio.</span></h2><p>Estoy construyendo mi camino.<br />Este es el primer paso.</p></div>
+        <div class="section-heading" data-reveal><h2 id="projects-title">Hecho con <span class="heading-accent">criterio.</span></h2><p>Webs con identidad propia.<br />Proyectos que ya puedes explorar.</p></div>
         <div class="project-grid">
-          {projects.map((project,index)=><article class="project-card" data-reveal>
-            <a class:list={['project-visual', { 'additional-project': index > 0 }]} href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: abrir proyecto en una pestaña nueva`}>
-              {index===0 ? <div class="site-miniature" aria-hidden="true"><div class="mini-nav"><span>manuel sanchez.</span><span>index.astro</span></div><div class="mini-content"><span class="mini-label">DISEÑO + DESARROLLO</span><strong>Tu negocio.<br />Una web<br /><em>a su altura.</em></strong><span class="mini-orbit">&lt;/&gt;</span></div><div class="mini-bottom"><span>CON NOMBRE PROPIO.</span><span>2026</span></div></div> : <span class="project-placeholder">{project.name}<Icon /></span>}
+          {projects.map(project=><article class="project-card" data-reveal>
+            <a class:list={['project-visual', { 'project-screenshot': project.preview }]} href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.name}: abrir proyecto en una pestaña nueva`}>
+              {project.preview ? <Image src={project.preview} alt={project.previewAlt ?? `Vista previa de ${project.name}`} widths={[480, 800, 1200]} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1000px) calc((100vw - 96px) / 2), (max-width: 1392px) calc((100vw - 164px) / 2), 614px" format="webp" quality={85} loading="lazy" decoding="async" /> : project.portfolioPreview ? <div class="site-miniature" aria-hidden="true"><div class="mini-nav"><span>manuel sanchez.</span><span>index.astro</span></div><div class="mini-content"><span class="mini-label">DISEÑO + DESARROLLO</span><strong>Tu negocio.<br />Una web<br /><em>a su altura.</em></strong><span class="mini-orbit">&lt;/&gt;</span></div><div class="mini-bottom"><span>CON NOMBRE PROPIO.</span><span>2026</span></div></div> : <span class="project-placeholder">{project.name}<Icon /></span>}
               <span class="project-open"><Icon /></span>
             </a>
-            <div class="project-meta"><span class="small-label">{project.category}</span><span>{project.year}</span></div>
+            <div class="project-meta"><span class="small-label">{project.category}</span>{project.year && <span>{project.year}</span>}</div>
             <h3>{project.name}</h3><p>{project.description}</p><dl class="project-case"><div><dt>El punto de partida</dt><dd>{project.challenge}</dd></div><div><dt>Qué hice</dt><dd>{project.work}</dd></div><div><dt>El resultado</dt><dd>{project.result}</dd></div></dl><div class="tags">{project.tools.map(tool=><span>{tool}</span>)}</div>
             {project.review && <blockquote class="project-review"><p>“{project.review.quote}”</p><cite>{project.review.author} · {project.review.role}</cite></blockquote>}
-            {index===0 && <a class="text-link project-source" href={project.url} target="_blank" rel="noopener noreferrer">Ver código en GitHub <Icon /></a>}
+            <a class="text-link project-source" href={project.url} target="_blank" rel="noopener noreferrer">{project.linkLabel} <Icon /></a>
           </article>)}
           <article class="next-project" data-reveal><span class="small-label">UNA INVITACIÓN A COLABORAR</span><span class="next-art" aria-hidden="true">↗</span><div><h3>¿Será este el<br /><span class="heading-accent">próximo proyecto?</span></h3><p>Estoy buscando colaborar con pequeños negocios que quieran mejorar su presencia online.</p><a class="button button-accent" href="#contacto">Cuéntame tu idea <Icon name="arrow" /></a></div></article>
         </div>

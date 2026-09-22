@@ -1,3 +1,6 @@
+import type { ImageMetadata } from 'astro';
+import sixFilmsPreview from '../assets/projects/dir-sixfilms.png';
+
 export const profile = {
   name: "Manuel Sanchez",
   education: "2.º de Ingeniería Informática",
@@ -19,12 +22,30 @@ export interface Project {
   work: string;
   result: string;
   url: string;
-  year: string;
+  year?: string;
+  linkLabel: string;
+  preview?: ImageMetadata;
+  previewAlt?: string;
+  portfolioPreview?: boolean;
   tools: string[];
   review?: Review;
 }
 // Añade aquí proyectos terminados y reseñas reales, con permiso de sus autores.
 export const projects: Project[] = [
+  {
+    name: "dir.sixFilms",
+    category: "Portfolio audiovisual · Filmmaker",
+    description:
+      "Web creada para el filmmaker dir.sixFilms: un espacio propio para presentar sus videoclips, portadas y trabajos de dirección visual.",
+    challenge: "Reunir su trabajo audiovisual y facilitar el contacto para nuevos proyectos.",
+    work: "Diseño y desarrollo de un portfolio visual con secciones para videoclips, artworks y contacto.",
+    result: "Una web publicada donde explorar sus trabajos y conocer su identidad como creador.",
+    url: "https://dirweb.vercel.app/",
+    linkLabel: "Visitar web",
+    preview: sixFilmsPreview,
+    previewAlt: "Portada de la web de dir.sixFilms, con el logotipo SixFilms sobre fondo negro.",
+    tools: ["Astro", "CSS"],
+  },
   {
     name: "Mi espacio en internet",
     category: "Portfolio personal",
@@ -34,6 +55,8 @@ export const projects: Project[] = [
     work: "Definí la estructura y la identidad visual, diseñé las secciones y desarrollé la web con Astro.",
     result: "Un portfolio que reúne servicios, proceso y proyectos, con un diseño adaptable y navegación con teclado.",
     url: "https://github.com/manusana/MIWEB",
+    linkLabel: "Ver código en GitHub",
+    portfolioPreview: true,
     year: "2026",
     tools: ["Astro", "TypeScript", "CSS"],
   },
