@@ -1,10 +1,14 @@
 ---
-interface Props { name?: 'arrow' | 'diagonal' | 'plus' | 'code' | 'spark' | 'check' | 'down'; class?: string; }
+interface Props { name?: 'arrow' | 'diagonal' | 'plus' | 'code' | 'spark' | 'check' | 'down' | 'globe' | 'network' | 'server' | 'lock'; class?: string; }
 const { name = 'diagonal', class: className } = Astro.props;
 const paths = {
   arrow: 'M4 12h16m-6-6 6 6-6 6', diagonal: 'M5 19 19 5M5 5h14v14',
   plus: 'M12 4v16M4 12h16', code: 'm8 5-7 7 7 7m8-14 7 7-7 7M14 3l-4 18',
   spark: 'm12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z',
+  globe: 'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18',
+  network: 'M9 3h6v5H9zM2 16h6v5H2zM16 16h6v5h-6zM12 8v4M5 16v-4h14v4',
+  server: 'M3 3h18v7H3zM3 14h18v7H3zM7 6.5h.01M7 17.5h.01M12 6.5h5M12 17.5h5',
+  lock: 'M5 10h14v11H5zM8 10V7a4 4 0 0 1 8 0v3M12 14v3',
   check: 'm5 12 4 4L19 6', down: 'M12 4v16m-6-6 6 6 6-6',
 };
 ---

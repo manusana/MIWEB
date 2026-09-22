@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/manuel-sanchez.jpg';
+import { profile } from '../data/site';
+---
+<aside class="editor-window" aria-label="Sobre Manuel">
+  <div class="editor-titlebar" aria-hidden="true">
+    <span class="window-dots"><i></i><i></i><i></i></span>
+    <span>manuel / portfolio</span><span class="editor-symbol">⌘</span>
+  </div>
+  <div class="editor-tabs" aria-hidden="true"><span class="editor-tab"><span>TS</span> sobre-mi.ts <span class="tab-dot"></span></span><span class="editor-tab-muted">README.md</span></div>
+  <div class="editor-body intro-person">
+    <div class="person-heading"><Image src={portrait} alt="Manuel Sanchez" class="portrait" width={240} height={240} widths={[112, 224, 336]} sizes="(max-width: 760px) 80px, 112px" fit="cover" position="center" format="webp" quality={85} loading="eager" fetchpriority="high" /><div><span class="eyebrow">LA PERSONA DETRÁS</span><h2>Soy Manuel<span>.</span></h2><span class="person-specialty">Diseño y desarrollo web</span></div></div>
+    <div class="editor-code" aria-hidden="true">
+      <div><span class="line-number">01</span><code><span class="syntax-purple">const</span> <span class="syntax-blue">enfoque</span> = {'{'}</code></div>
+      <div class="code-active"><span class="line-number">02</span><code>&nbsp; diseño: <span class="syntax-green">"con intención"</span>,</code></div>
+      <div><span class="line-number">03</span><code>&nbsp; código: <span class="syntax-green">"con cuidado"</span>,</code></div>
+      <div><span class="line-number">04</span><code>&nbsp; contigo: <span class="syntax-green">"paso a paso"</span></code></div>
+      <div><span class="line-number">05</span><code>{'}'};</code></div>
+    </div>
+    <p>Estudio segundo de Ingeniería Informática y uno diseño y programación para crear webs útiles. Trabajas directamente conmigo, desde la primera idea hasta la publicación.</p>
+    <span class="study-note">{profile.education}<span aria-hidden="true">↗</span></span>
+  </div>
+  <div class="editor-status" aria-hidden="true"><span>⑂ main</span><span>UTF-8 <span class="status-language">TypeScript</span></span></div>
+</aside>

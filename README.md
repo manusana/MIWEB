@@ -36,9 +36,9 @@ El proveedor de dominio y alojamiento está pendiente de elección. La sección 
 
 ## Diseño y rendimiento
 
-Astro estático y TypeScript, con CSS y Tailwind. Fondo azul oscuro, tonos claros y acento verde suave. Manrope alojada localmente (licencia en `public/fonts/OFL-Manrope.txt`) y retrato optimizado por Astro a WebP en varios tamaños. La vista del proyecto está dibujada con HTML y CSS.
+Astro estático y TypeScript, con CSS y Tailwind. Tema oscuro inspirado en editores de código: superficies grafito, acentos azules y resaltado de sintaxis. JetBrains Mono local para titulares y detalles (licencia en `public/fonts/OFL-JetBrainsMono.txt`), combinada con Manrope para los textos. El componente `EditorProfile.astro` presenta el perfil como un panel de editor. Logos SVG locales de Simple Icons en `public/logos/`, con su licencia y procedencia; los servicios sin marca usan iconos descriptivos. Manrope alojada localmente (licencia en `public/fonts/OFL-Manrope.txt`) y retrato optimizado por Astro a WebP en varios tamaños. La vista del proyecto está dibujada con HTML y CSS.
 
-Scroll nativo, animaciones discretas mediante IntersectionObserver y respeto a `prefers-reduced-motion`. El contenido, los enlaces y los acordeones funcionan sin JavaScript. El menú móvil admite teclado, Escape y cierre al seleccionar una sección.
+Scroll nativo, animaciones discretas mediante IntersectionObserver y un efecto de escritura de una sola pasada en el titular. El texto completo permanece en el HTML y para lectores de pantalla. Con `prefers-reduced-motion`, se muestra sin animar; cambiar la preferencia o esconder la pestaña completa la escritura y cancela sus temporizadores. El contenido, los enlaces y los acordeones funcionan sin JavaScript. El menú móvil admite teclado, Escape y cierre al seleccionar una sección.
 
 ## Publicación
 

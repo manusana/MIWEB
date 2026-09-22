@@ -71,3 +71,32 @@ if ('IntersectionObserver' in window) {
   }, { rootMargin: '-18% 0px -60% 0px', threshold: 0 });
   document.querySelectorAll('main > section[id]').forEach((section) => active.observe(section));
 }
+
+// A single typing pass; the full heading remains in the HTML and accessibility tree.
+const typedText = document.querySelector<HTMLElement>('[data-typewriter]');
+if (typedText && !motion.matches) {
+  const fullText = typedText.textContent ?? '';
+  const characters = Array.from(fullText);
+  let position = 0;
+  let timer = 0;
+  const finishTyping = () => {
+    window.clearTimeout(timer);
+    typedText.textContent = fullText;
+    typedText.classList.remove('typing-active');
+  };
+  const typeNext = () => {
+    position += 1;
+    typedText.textContent = characters.slice(0, position).join('');
+    timer = window.setTimeout(position < characters.length ? typeNext : finishTyping,
+      position < characters.length ? 80 : 1400);
+  };
+  typedText.textContent = '';
+  typedText.classList.add('typing-active');
+  timer = window.setTimeout(typeNext, 300);
+  motion.addEventListener('change', () => {
+    if (motion.matches) finishTyping();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) finishTyping();
+  });
+}

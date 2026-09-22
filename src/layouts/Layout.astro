@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
-const title = 'Manuel Sanchez — Portfolio y desarrollo web';
-const description = 'Portfolio de Manuel Sanchez, estudiante de Ingeniería Informática. Proyectos, tecnologías y desarrollo web para empresas sin página web o que necesitan renovarla.';
+const title = 'Manuel Sanchez — Diseño web para pequeños negocios';
+const description = 'Diseño y desarrollo webs para pequeños negocios que necesitan verse profesionales, explicar mejor lo que hacen y conseguir más contactos. Conoce a Manuel Sanchez y sus proyectos.';
 ---
 <!doctype html>
 <html lang="es">
@@ -9,13 +9,14 @@ const description = 'Portfolio de Manuel Sanchez, estudiante de Ingeniería Info
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#171c24" />
+    <meta name="theme-color" content="#0d1117" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
   </head>
   <body><slot /></body>

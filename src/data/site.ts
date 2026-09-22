@@ -1,8 +1,7 @@
-// Completa el correo cuando esté listo; el contacto se activará automáticamente.
 export const profile = {
   name: "Manuel Sanchez",
   education: "2.º de Ingeniería Informática",
-  email: "",
+  email: "1firstech1@gmail.com",
   github: "https://github.com/manusana",
 };
 
@@ -15,6 +14,9 @@ export interface Project {
   name: string;
   category: string;
   description: string;
+  challenge: string;
+  work: string;
+  result: string;
   url: string;
   year: string;
   tools: string[];
@@ -27,6 +29,9 @@ export const projects: Project[] = [
     category: "Portfolio personal",
     description:
       "Identidad, diseño y desarrollo de este portfolio. Una web ligera para contar quién soy y cómo trabajo.",
+    challenge: "Necesitaba un espacio propio para presentar mis servicios y mostrar cómo trabajo.",
+    work: "Definí la estructura y la identidad visual, diseñé las secciones y desarrollé la web con Astro.",
+    result: "Un portfolio que reúne servicios, proceso y proyectos, con un diseño adaptable y navegación con teclado.",
     url: "https://github.com/manusana/MIWEB",
     year: "2026",
     tools: ["Astro", "TypeScript", "CSS"],
@@ -60,12 +65,30 @@ export const process = [
   },
 ];
 
-export const toolkit = [
+interface Tool {
+  name: string;
+  logo?: string;
+  icon?: 'globe' | 'network' | 'server' | 'lock';
+}
+interface ToolGroup {
+  number: string;
+  title: string;
+  summary: string;
+  tools: Tool[];
+  description: string;
+}
+export const toolkit: ToolGroup[] = [
   {
     number: "01",
     title: "Código & estructura",
     summary: "Una base ligera y fácil de mantener.",
-    tools: ["Astro", "TypeScript", "HTML", "CSS · Tailwind"],
+    tools: [
+      { name: "Astro", logo: "/logos/astro.svg" },
+      { name: "TypeScript", logo: "/logos/typescript.svg" },
+      { name: "HTML", logo: "/logos/html5.svg" },
+      { name: "CSS", logo: "/logos/css.svg" },
+      { name: "Tailwind CSS", logo: "/logos/tailwindcss.svg" },
+    ],
     description:
       "Contenido rápido de cargar, componentes reutilizables y el JavaScript necesario para cada interacción.",
   },
@@ -73,7 +96,10 @@ export const toolkit = [
     number: "02",
     title: "Versiones & evolución",
     summary: "Cada cambio, bajo control.",
-    tools: ["Git", "GitHub"],
+    tools: [
+      { name: "Git", logo: "/logos/git.svg" },
+      { name: "GitHub", logo: "/logos/github.svg" },
+    ],
     description:
       "Organizo el código y su historial para revisar cambios, recuperar versiones y seguir mejorando la web.",
   },
@@ -81,7 +107,12 @@ export const toolkit = [
     number: "03",
     title: "Dominio & publicación",
     summary: "De una carpeta a una dirección propia.",
-    tools: ["Dominio", "DNS", "Alojamiento", "HTTPS"],
+    tools: [
+      { name: "Dominio", icon: "globe" },
+      { name: "DNS", icon: "network" },
+      { name: "Alojamiento", icon: "server" },
+      { name: "HTTPS", icon: "lock" },
+    ],
     description:
       "Te ayudo a elegir y conectar los servicios que necesite tu web. El proveedor se decide según el proyecto, el presupuesto y su mantenimiento.",
   },
