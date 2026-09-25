@@ -1,0 +1,7 @@
+---
+interface Props {
+  symbol?: string;
+}
+const { symbol = '·' } = Astro.props;
+---
+<span class="action-mark" aria-hidden="true"><span class="mark-bracket">[</span><span class="mark-symbol">{symbol}</span><span class="mark-bracket">]</span></span>

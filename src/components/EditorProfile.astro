@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import portrait from '../assets/manuel-sanchez.jpg';
 import { profile } from '../data/site';
+import ActionMark from './ActionMark.astro';
 ---
 <aside class="editor-window" aria-label="Sobre Manuel">
   <div class="editor-titlebar" aria-hidden="true">
@@ -19,7 +20,7 @@ import { profile } from '../data/site';
       <div><span class="line-number">05</span><code>{'}'};</code></div>
     </div>
     <p>Estudio segundo de Ingeniería Informática y uno diseño y programación para crear webs útiles. Trabajas directamente conmigo, desde la primera idea hasta la publicación.</p>
-    <span class="study-note">{profile.education}<span aria-hidden="true">↗</span></span>
+    <span class="study-note">{profile.education}<ActionMark symbol="*" /></span>
   </div>
   <div class="editor-status" aria-hidden="true"><span>⑂ main</span><span>UTF-8 <span class="status-language">TypeScript</span></span></div>
 </aside>

@@ -1,5 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import sixFilmsPreview from '../assets/projects/dir-sixfilms.png';
+import caudalPreview from '../assets/projects/caudal.png';
 
 export const profile = {
   name: "Manuel Sanchez",
@@ -32,6 +33,20 @@ export interface Project {
 }
 // Añade aquí proyectos terminados y reseñas reales, con permiso de sus autores.
 export const projects: Project[] = [
+  {
+    name: "Caudal",
+    category: "Plantilla de demostración · Fontanería",
+    description:
+      "Concepto de web para un negocio de fontanería y reformas. Una presentación visual de sus servicios, zona de cobertura y vías de contacto, con contenido de ejemplo.",
+    challenge: "Mostrar cómo un negocio local puede presentar sus servicios y facilitar las solicitudes de presupuesto.",
+    work: "Diseño de una plantilla con catálogo de servicios, galería de inspiración, cobertura local y formulario de consulta en modo demostración.",
+    result: "Una demo navegable para explorar la propuesta visual y el recorrido de contacto, con cifras y testimonios ilustrativos claramente identificados.",
+    url: "https://plantilla-caudal.vercel.app/",
+    linkLabel: "Explorar demo",
+    preview: caudalPreview,
+    previewAlt: "Portada de Caudal: el nombre del proyecto sobre la fotografía de un baño luminoso.",
+    tools: ["Astro", "CSS"],
+  },
   {
     name: "dir.sixFilms",
     category: "Portfolio audiovisual · Filmmaker",
